@@ -52,6 +52,7 @@ if (Meteor.settings && Meteor.settings.public && Meteor.settings.public.sandstor
       logins[token] = future;
 
       var timeout = setTimeout(function () {
+        delete logins[token];
         future.throw(new Meteor.Error("timeout", "Gave up waiting for login rendezvous XHR."));
       }, 10000);
 
